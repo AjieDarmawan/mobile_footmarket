@@ -25,7 +25,7 @@ class CustomTabar extends StatelessWidget {
           Row(
             children: titles
                 .map((e) => Padding(
-                      padding: EdgeInsets.only(left: defaultMargin),
+                      padding: EdgeInsets.only(left: defaultMargin,top: 10),
                       child: Column(
                         children: [
                           GestureDetector(

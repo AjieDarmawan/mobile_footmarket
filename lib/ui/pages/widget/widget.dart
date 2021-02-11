@@ -12,3 +12,5 @@ part 'food_card.dart';
 part 'custom_tabbar.dart';
 part 'food_list_item.dart';
 part 'order_item_food.dart';
+part 'account.dart';
+part 'account_foot_market.dart';

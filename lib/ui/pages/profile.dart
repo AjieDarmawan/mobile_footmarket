@@ -61,8 +61,16 @@ class _ProfileState extends State<Profile> {
                       ),
                     ),
                   ),
-                  Center(child:Text('nama')),
-                  Text('tes'),
+                  Center(
+                      child: Text(
+                    'nama',
+                    style: blackFontStyle2,
+                  )),
+                  Center(
+                      child: Text(
+                    'nama',
+                    style: greyFontStyle.copyWith(fontSize: 12),
+                  )),
                 ],
               ),
             ),
@@ -72,59 +80,67 @@ class _ProfileState extends State<Profile> {
               color: Colors.white,
               child: Column(
                 children: [
-                  CustomTabar(
-                    titles: ["Account", "FoodMarket"],
-                    selectedIndex: selectedIndex,
-                    onTap: (index) {
-                      setState(() {
-                        selectedIndex = index;
-                      });
-                    },
+                  Container(
+                   // margin: EdgeInsets.only(top: 100),
+                    //padding: const EdgeInsets.only(top: 100),
+                    child: CustomTabar(
+                      titles: ["Account", "FoodMarket"],
+                      selectedIndex: selectedIndex,
+                      onTap: (index) {
+                        setState(() {
+                          selectedIndex = index;
+                        });
+                      },
+                    ),
                   ),
                   SizedBox(
                     height: 16,
                   ),
-                  Column(
-                    children: ((selectedIndex == 0)
-                            ? [
-                                'Edit Profile',
-                                'Home Address',
-                                'Security',
-                                'Payment'
-                              ]
-                            : [
-                                'Rate App',
-                                'Help Center',
-                                'Privacy & Policy',
-                                'Term & Condition'
-                              ]
-                    )
-                        .map((e) => Padding(
-                              padding: EdgeInsets.only(
-                                  bottom: 16,
-                                  left: defaultMargin,
-                                  right: defaultMargin),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    e,
-                                    style: blackFontStyle3,
-                                  ),
-                                  SizedBox(
-                                    height: 24,
-                                    width: 24,
-                                    child: Image.asset(
-                                      'assets/right_arrow.png',
-                                      fit: BoxFit.contain,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ))
-                        .toList(),
-                  )
+                  (selectedIndex == 0)
+                      ? Account()
+                      : AccountFood(),
+
+//                  Column(
+//                    children: ((selectedIndex == 0)
+//                            ? [
+//                                'Edit Profile',
+//                                'Home Address',
+//                                'Security',
+//                                'Payment'
+//                              ]
+//                            : [
+//                                'Rate App',
+//                                'Help Center',
+//                                'Privacy & Policy',
+//                                'Term & Condition'
+//                              ]
+//                    )
+//                        .map((e) => Padding(
+//                              padding: EdgeInsets.only(
+//                                  bottom: 16,
+//                                  left: defaultMargin,
+//                                  right: defaultMargin),
+//                              child: Row(
+//                                mainAxisAlignment:
+//                                    MainAxisAlignment.spaceBetween,
+//                                children: [
+//                                  Text(
+//                                    e,
+//                                    style: blackFontStyle3,
+//                                  ),
+//                                  SizedBox(
+//                                    height: 24,
+//                                    width: 24,
+//                                    child: Image.asset(
+//                                      'assets/right_arrow.png',
+//                                      fit: BoxFit.contain,
+//                                    ),
+//                                  )
+//                                ],
+//                              ),
+//                            ))
+//                        .toList(),
+//                  )
                 ],
               ),
             ),
