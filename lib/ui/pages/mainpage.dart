@@ -32,8 +32,19 @@ class _MainPageState extends State<MainPage> {
                   },
                   children: [
                 Center(child: FoodPage()),
-                Center(child: Text("Order")),
-                Center(child: Text("Profile")),
+                    Center(child: OrderHistory()),
+//                Center(
+//                    child: IlustrationPage(
+//                  title: "tes",
+//                  subtitle: "subtitle",
+//                  picturePath: "assets/love_burger.png",
+//                  button1: "Find Fouds 123",
+//                  buttonTap1: () {},
+//                  button2: "",
+//                  buttonTap2: () {},
+//                )),
+                //Center(child: SuccessPage()),
+                    Center(child: Profile()),
               ])),
           Align(
             alignment: Alignment.bottomCenter,

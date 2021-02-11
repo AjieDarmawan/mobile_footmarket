@@ -8,6 +8,7 @@ import 'package:flutter_food_market/ui/pages/widget/widget.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:supercharged/supercharged.dart';
 
 
@@ -18,4 +19,10 @@ part 'address_page.dart';
 part 'mainpage.dart';
 part 'food_page.dart';
 part 'food_detail_page.dart';
+part 'payment_page.dart';
+part 'ilustration.dart';
+part 'success_order.dart';
+part 'success_sign.dart';
+part 'order_history.dart';
+part 'profile.dart';
 

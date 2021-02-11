@@ -79,6 +79,7 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
                       ),
                       color: Colors.white),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -87,7 +88,7 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(
-                                width: MediaQuery.of(context).size.width - 132,
+                                width: MediaQuery.of(context).size.width - 150,
                                 child: Text(
                                   widget.transaction.food.name,
                                   style: blackFontStyle2,
@@ -149,7 +150,59 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
                       ),
                       Container(
                         margin : EdgeInsets.fromLTRB(0,14,0,16),
-                        
+                        child: Text(widget.transaction.food.description,style: greyFontStyle,),
+
+                      ),
+                      Text(
+                        'ingredients',style: blackFontStyle3,
+                      ),
+                      Container(
+                        margin: EdgeInsets.fromLTRB(0, 4, 0, 41),
+                        child: Text(
+                          widget.transaction.food.ingredients,style: greyFontStyle,
+                        ),
+                      ),
+                      Row(
+                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Total Price',style: greyFontStyle,
+                              ),
+                              Container(
+                                margin: EdgeInsets.fromLTRB(0, 4, 0, 41),
+                                child: Text(
+                                  widget.transaction.food.price.toString(),style: blackFontStyle2.copyWith(fontSize: 16),
+                                ),
+                              ),
+                            ],
+
+
+
+                          ),
+                          SizedBox(
+                            width: 163,
+                            height: 45,
+                            child: RaisedButton(
+                              onPressed: (){
+
+                              },
+                              color: mainColor,
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+
+                              ),
+                              child: Text(
+                                "Order Now",style: blackFontStyle1.copyWith(fontSize: 16),
+                              ),
+                            ),
+                          ),
+
+                        ],
                       )
                     ],
                   ),
