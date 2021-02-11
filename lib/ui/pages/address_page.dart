@@ -135,7 +135,9 @@ class _AddressPageState extends State<AddressPage> {
             margin: EdgeInsets.only(top: 24),
             padding: EdgeInsets.symmetric(horizontal: defaultMargin),
             child: RaisedButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.to(MainPage());
+              },
               elevation: 0,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8)),

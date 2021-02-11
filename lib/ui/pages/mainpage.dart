@@ -27,11 +27,11 @@ class _MainPageState extends State<MainPage> {
                   controller: pageController,
                   onPageChanged: (index) {
                     setState(() {
-                      selectedPage == index;
+                      selectedPage = index;
                     });
                   },
                   children: [
-                Center(child: Text("Home")),
+                Center(child: FoodPage()),
                 Center(child: Text("Order")),
                 Center(child: Text("Profile")),
               ])),
@@ -41,7 +41,7 @@ class _MainPageState extends State<MainPage> {
               selectedIndex: selectedPage,
               onTap: (index) {
                 setState(() {
-                  selectedPage == index;
+                  selectedPage = index;
                 });
                 pageController.jumpToPage(selectedPage);
               },

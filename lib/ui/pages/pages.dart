@@ -1,4 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_food_market/models/models.dart';
+
 import 'package:flutter_food_market/shared/shared.dart';
 import 'package:flutter_food_market/ui/pages/widget/widget.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -12,4 +16,6 @@ part 'sign_in.dart';
 part 'sign_up.dart';
 part 'address_page.dart';
 part 'mainpage.dart';
+part 'food_page.dart';
+part 'food_detail_page.dart';
 

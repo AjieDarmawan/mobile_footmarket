@@ -34,6 +34,9 @@ dependencies:
   supercharged: ^1.12.0
   flutter_spinkit: ^4.1.2+1
   get: ^3.24.0
+  material_design_icons_flutter: ^4.0.5855
+  intl: ^0.16.1
+  equatable: ^1.2.6
 
 dev_dependencies:
   flutter_test:
