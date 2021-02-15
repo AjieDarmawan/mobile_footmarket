@@ -149,68 +149,70 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
                         ],
                       ),
                       Container(
-                        margin : EdgeInsets.fromLTRB(0,14,0,16),
-                        child: Text(widget.transaction.food.description,style: greyFontStyle,),
-
+                        margin: EdgeInsets.fromLTRB(0, 14, 0, 16),
+                        child: Text(
+                          widget.transaction.food.description,
+                          style: greyFontStyle,
+                        ),
                       ),
                       Text(
-                        'ingredients',style: blackFontStyle3,
+                        'ingredients',
+                        style: blackFontStyle3,
                       ),
                       Container(
                         margin: EdgeInsets.fromLTRB(0, 4, 0, 41),
                         child: Text(
-                          widget.transaction.food.ingredients,style: greyFontStyle,
+                          widget.transaction.food.ingredients,
+                          style: greyFontStyle,
                         ),
                       ),
                       Row(
-                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Total Price',style: greyFontStyle,
+                                'Total Price',
+                                style: greyFontStyle,
                               ),
                               Container(
                                 margin: EdgeInsets.fromLTRB(0, 4, 0, 41),
                                 child: Text(
-                                  widget.transaction.food.price.toString(),style: blackFontStyle2.copyWith(fontSize: 16),
+                                  widget.transaction.food.price.toString(),
+                                  style: blackFontStyle2.copyWith(fontSize: 16),
                                 ),
                               ),
                             ],
-
-
-
                           ),
                           SizedBox(
                             width: 163,
                             height: 45,
                             child: RaisedButton(
-                              onPressed: (){
-
+                              onPressed: () {
                                 Get.to(
                                   PaymentPage(
                                     transaction: widget.transaction.copyWith(
-                                      quantity: quantity,
-                                      total: quantity * widget.transaction.food.price
-                                    ),
+                                        quantity: quantity,
+                                        total: quantity *
+                                            widget.transaction.food.price),
+                                    onBackButtomPressed: () {
+                                      Get.back();
+                                    },
                                   ),
                                 );
-
                               },
                               color: mainColor,
                               elevation: 0,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),
-
                               ),
                               child: Text(
-                                "Order Now",style: blackFontStyle1.copyWith(fontSize: 16),
+                                "Order Now",
+                                style: blackFontStyle1.copyWith(fontSize: 16),
                               ),
                             ),
                           ),
-
                         ],
                       )
                     ],

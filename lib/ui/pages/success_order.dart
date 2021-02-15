@@ -11,9 +11,13 @@ class SuccessPage extends StatelessWidget {
             "Just Stay with at home while we are \n preparating youer best food",
         picturePath: 'assets/bike.png',
         button1: "Order Other Food",
-        buttonTap1: () {},
-//        button2: "View My Order",
-//        buttonTap2: () {},
+        buttonTap1: () {
+          Get.offAll(MainPage());
+        },
+       button2: "View My Order",
+       buttonTap2: () {
+          Get.offAll(MainPage(InitialPage: 1,));
+       },
       ),
     );
   }

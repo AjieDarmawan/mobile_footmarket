@@ -5,12 +5,12 @@ class PaymentPage extends StatefulWidget {
   _PaymentPageState createState() => _PaymentPageState();
 
   final Transaction transaction;
+  final onBackButtomPressed;
 
-  PaymentPage({this.transaction});
+  PaymentPage({this.transaction, this.onBackButtomPressed});
 }
 
 class _PaymentPageState extends State<PaymentPage> {
-
   bool isLoading = false;
 
   @override
@@ -18,7 +18,9 @@ class _PaymentPageState extends State<PaymentPage> {
     return GeneralPage(
       title: "PAYMENT",
       subtitle: "you deserve better meal",
-      onBackButtonPressed: () {},
+      onBackButtonPressed: () {
+        widget.onBackButtomPressed();
+      },
       backColor: "FAFAFC".toColor(),
       child: Column(
         children: [
@@ -304,47 +306,62 @@ class _PaymentPageState extends State<PaymentPage> {
                         ))
                   ],
                 ),
+                (isLoading)
+                    ? Center(
+                        child: loadingIndicator,
+                      )
+                    : Container(
+                        margin: EdgeInsets.symmetric(vertical: defaultMargin),
+                        height: 45,
+                        width: double.infinity,
+                        child: RaisedButton(
+                          onPressed: () async {
+                            setState(() {
+                              isLoading = true;
+                            });
 
-                (isLoading) ? Center(child: loadingIndicator,) :
+                            bool result = await context
+                                .bloc<TransactionCubit>()
+                                .submitTransaction(widget.transaction.copyWith(
+                                    dateTime: DateTime.now(),
+                                    total: (widget.transaction.total * 1.1)
+                                            .toInt() +
+                                        50000));
 
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: defaultMargin),
-                  height: 45,
-                  width: double.infinity,
-                  child: RaisedButton(
-                    onPressed: ()async{
-                      setState(() {
-
-                        isLoading = true;
-                      });
-
-                     bool result = context.bloc<TransactionCubit>().submitTransaction(widget.transaction.copyWith(
-                        dateTime: DateTime.now(),
-                        total:(widget.transaction.total * 1.1 ).toInt() +  50000
-                      ));
-
-                       if(result == true){
-                         Get.to("");
-
-                       }else{
-                         setState(() {
-                           isLoading = false;
-                         });
-                       }
-                      
-
-                    },
-                    color: mainColor,
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Text(
-                      "Checkout Now",
-                      style: blackFontStyle1.copyWith(fontSize: 16),
-                    ),
-                  ),
-                )
+                            if (result == true) {
+                              Get.to(SuccessPage());
+                            } else {
+                              setState(() {
+                                isLoading = false;
+                              });
+                              Get.snackbar("", "",
+                                  backgroundColor: "D9435E".toColor(),
+                                  icon: Icon(MdiIcons.closeCircleOutline,
+                                      color: Colors.white),
+                                  titleText: Text(
+                                    'Transaction Failed',
+                                    style: GoogleFonts.poppins(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  messageText: Text(
+                                    'Please try again later.',
+                                    style: GoogleFonts.poppins(
+                                        color: Colors.white),
+                                  ));
+                            }
+                          },
+                          color: mainColor,
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Text(
+                            "Checkout Now",
+                            style: blackFontStyle1.copyWith(fontSize: 16),
+                          ),
+                        ),
+                      )
               ],
             ),
           ),
