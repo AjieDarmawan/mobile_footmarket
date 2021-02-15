@@ -10,6 +10,9 @@ class PaymentPage extends StatefulWidget {
 }
 
 class _PaymentPageState extends State<PaymentPage> {
+
+  bool isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     return GeneralPage(
@@ -301,12 +304,36 @@ class _PaymentPageState extends State<PaymentPage> {
                         ))
                   ],
                 ),
+
+                (isLoading) ? Center(child: loadingIndicator,) :
+
                 Container(
                   margin: EdgeInsets.symmetric(vertical: defaultMargin),
                   height: 45,
                   width: double.infinity,
                   child: RaisedButton(
-                    onPressed: () {},
+                    onPressed: ()async{
+                      setState(() {
+
+                        isLoading = true;
+                      });
+
+                     bool result = context.bloc<TransactionCubit>().submitTransaction(widget.transaction.copyWith(
+                        dateTime: DateTime.now(),
+                        total:(widget.transaction.total * 1.1 ).toInt() +  50000
+                      ));
+
+                       if(result == true){
+                         Get.to("");
+
+                       }else{
+                         setState(() {
+                           isLoading = false;
+                         });
+                       }
+                      
+
+                    },
                     color: mainColor,
                     elevation: 0,
                     shape: RoundedRectangleBorder(

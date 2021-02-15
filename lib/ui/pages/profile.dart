@@ -55,7 +55,7 @@ class _ProfileState extends State<Profile> {
                             shape: BoxShape.circle,
                             image: DecorationImage(
                                 image: NetworkImage(
-                                  "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50.jpg",
+                                   (context.bloc<UserCubit>().state as UserLoaded).user.picturePath,
                                 ),
                                 fit: BoxFit.cover)),
                       ),
@@ -63,12 +63,12 @@ class _ProfileState extends State<Profile> {
                   ),
                   Center(
                       child: Text(
-                    'nama',
+                    (context.bloc<UserCubit>().state as UserLoaded).user.name,
                     style: blackFontStyle2,
                   )),
                   Center(
                       child: Text(
-                    'nama',
+                     (context.bloc<UserCubit>().state as UserLoaded).user.email,
                     style: greyFontStyle.copyWith(fontSize: 12),
                   )),
                 ],
